@@ -1,0 +1,4 @@
+{
+    "connectionString": "mongodb+srv://sofiachabbah:Altern2019dev@hugebooking-56s9z.azure.mongodb.net/hugebookingdb?retryWrites=true&w=majority",
+    "secret": "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING"
+}
