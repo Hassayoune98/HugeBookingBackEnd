@@ -9,6 +9,7 @@ var crypto = require('crypto');
 var nodemailer = require("nodemailer");
 var mailer = require("mailer/mailer.service");
 var VoitureOptionService = db.VoitureOptionService;
+var Service = db.Service;
 
 module.exports = {
     create,
@@ -18,8 +19,9 @@ module.exports = {
 
 
 async function create(optionServiceParam) {
+    console.log("option voiture : ", optionServiceParam.body)
     var optionservice = new VoitureOptionService({
-        diponibility: optionServiceParam.body.diponibility,
+        disponibility: optionServiceParam.body.disponibility,
         name: optionServiceParam.body.name,
         dateFinReservation: optionServiceParam.body.dateFinReservation,
         dateDebutReservation: optionServiceParam.body.dateDebutReservation,
@@ -27,6 +29,12 @@ async function create(optionServiceParam) {
         price: optionServiceParam.body.price,
         status: optionServiceParam.body.status
 
+    })
+
+    var service = await Service.findById(optionServiceParam.headers.idservice)
+    console.log("id Service ", optionservice._id)
+    await service.update({
+        $addToSet: { voitureOption: optionservice._id }
     })
 
     if (await optionservice.save()) {

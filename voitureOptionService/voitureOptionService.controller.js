@@ -9,6 +9,7 @@ router.delete('/delete', _delete);
 module.exports = router;
 
 function create(req, res, next) {
+    console.log("test api ", req)
     voitureOptionService.create(req)
         .then(() => res.json({ message: 'option service created with success' }))
         .catch(err => next(err));
