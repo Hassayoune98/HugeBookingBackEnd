@@ -1,14 +1,6 @@
-const config = require('config.json');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 const db = require('helpers/db');
-const Role = require('helpers/role');
-var generator = require('generate-password');
-var async = require("async");
-var crypto = require('crypto');
-var nodemailer = require("nodemailer");
-var mailer = require("mailer/mailer.service");
-var VoitureOptionService = db.VoitureOptionService;
+
+var chambreOptionService = db.chambreOptionService;
 var Service = db.Service;
 
 module.exports = {
@@ -19,13 +11,13 @@ module.exports = {
 
 
 async function create(optionServiceParam) {
-    console.log("option voiture : ", optionServiceParam.body)
-    var optionservice = new VoitureOptionService({
+    console.log("option chambre : ", optionServiceParam.body)
+    var optionservice = new chambreOptionService({
         disponibility: optionServiceParam.body.disponibility,
         name: optionServiceParam.body.name,
         dateFinReservation: optionServiceParam.body.dateFinReservation,
         dateDebutReservation: optionServiceParam.body.dateDebutReservation,
-        model: optionServiceParam.body.model,
+        typeChambre: optionServiceParam.body.typeChambre,
         price: optionServiceParam.body.price,
         status: optionServiceParam.body.status
 
@@ -34,7 +26,7 @@ async function create(optionServiceParam) {
     var service = await Service.findById(optionServiceParam.headers.idservice)
     console.log("id Service ", optionservice._id)
     await service.update({
-        $addToSet: { voitureOption: optionservice._id }
+        $addToSet: { chambreOption: optionservice._id }
     })
 
     if (await optionservice.save()) {
@@ -52,7 +44,7 @@ async function create(optionServiceParam) {
 
 async function update(idOptionService, optionServiceParam) {
 
-    const optionService = await VoitureOptionService.findById(idOptionService);
+    const optionService = await chambreOptionService.findById(idOptionService);
     if (!optionService) throw 'optionService not found';
     Object.assign(optionService, optionServiceParam);
 
@@ -62,6 +54,6 @@ async function update(idOptionService, optionServiceParam) {
 
 
 async function _delete(idOptionService) {
-    const optionService = await VoitureOptionService.findByIdAndRemove(idOptionService);
+    const optionService = await chambreOptionService.findByIdAndRemove(idOptionService);
 
 }

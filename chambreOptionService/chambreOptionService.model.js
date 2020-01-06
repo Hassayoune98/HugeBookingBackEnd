@@ -8,11 +8,11 @@ const schema = new Schema({
     disponibility: { type: Boolean, required: true },
     name: { type: String, required: true },
     price: { type: Number },
-    status: { type: String },
-    model: { type: String }
+    typeChambre: { type: String },
+    status: { type: String }
 
 });
 
 schema.set('toJSON', { virtuals: true });
 
-module.exports = mongoose.model('VoitureOptionService', schema);
+module.exports = mongoose.model('chambreOptionService', schema);

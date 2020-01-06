@@ -16,6 +16,7 @@ module.exports = {
     update,
     _delete,
     getOptionServiceVoitureById,
+    getOptionServiceChambreById,
     getServiceByType
 };
 
@@ -61,6 +62,13 @@ async function getOptionServiceVoitureById(serviceParam) {
 
 }
 
+
+async function getOptionServiceChambreById(serviceParam) {
+    const service = await Service.findById(serviceParam.headers.idservice).populate("chambreOption");
+    console.log("liste optionservice ", service);
+    return await service;
+
+}
 async function _delete(idService) {
     const service = await Service.findByIdAndRemove(idService);
 
