@@ -2,14 +2,13 @@ const config = require('config.json');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('helpers/db');
-const User = db.User;
 const Role = require('helpers/role');
 var generator = require('generate-password');
 var async = require("async");
 var crypto = require('crypto');
 var nodemailer = require("nodemailer");
 var mailer = require("mailer/mailer.service");
-var OptionService = db.OptionService;
+var VoitureOptionService = db.VoitureOptionService;
 
 module.exports = {
     create,
@@ -19,11 +18,14 @@ module.exports = {
 
 
 async function create(optionServiceParam) {
-    var optionservice = new OptionService({
-        diponibily: optionServiceParam.body.diponibily,
+    var optionservice = new VoitureOptionService({
+        diponibility: optionServiceParam.body.diponibility,
         name: optionServiceParam.body.name,
-
-
+        dateFinReservation: optionServiceParam.body.dateFinReservation,
+        dateDebutReservation: optionServiceParam.body.dateDebutReservation,
+        model: optionServiceParam.body.model,
+        price: optionServiceParam.body.price,
+        status: optionServiceParam.body.status
 
     })
 
@@ -42,7 +44,7 @@ async function create(optionServiceParam) {
 
 async function update(idOptionService, optionServiceParam) {
 
-    const optionService = await OptionService.findById(idOptionService);
+    const optionService = await VoitureOptionService.findById(idOptionService);
     if (!optionService) throw 'optionService not found';
     Object.assign(optionService, optionServiceParam);
 
@@ -52,6 +54,6 @@ async function update(idOptionService, optionServiceParam) {
 
 
 async function _delete(idOptionService) {
-    const optionService = await OptionService.findByIdAndRemove(idOptionService);
+    const optionService = await VoitureOptionService.findByIdAndRemove(idOptionService);
 
 }
