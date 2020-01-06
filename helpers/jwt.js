@@ -15,7 +15,8 @@ function jwt() {
             '/admin/register',
             '/admin/authenticate',
             '/VoitureOptionService/create',
-            '/service/create'
+            '/service/create',
+            '/service/getOptionServiceVoiture'
         ]
     });
 }

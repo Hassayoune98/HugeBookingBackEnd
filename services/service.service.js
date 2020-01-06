@@ -14,7 +14,8 @@ var Service = db.Service;
 module.exports = {
     create,
     update,
-    _delete
+    _delete,
+    getOptionServiceVoiture
 };
 
 
@@ -44,15 +45,20 @@ async function create(serviceParam) {
 async function update(idService, serviceParam) {
 
     const service = await Service.findById(idService);
-    console.log("hello ", service )
-    console.log("hello ", idService )
+    console.log("hello ", service)
+    console.log("hello ", idService)
     if (!service) throw 'Service not found';
     Object.assign(service, serviceParam);
 
     return await service.save();
 }
 
+async function getOptionServiceVoiture(serviceParam) {
+    const service = await Service.findById(serviceParam.headers.idservice).populate("voitureOption");
+    console.log("liste optionservice ", service);
+    return await service;
 
+}
 
 async function _delete(idService) {
     const service = await Service.findByIdAndRemove(idService);
