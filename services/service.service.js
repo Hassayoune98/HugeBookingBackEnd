@@ -68,6 +68,9 @@ async function _delete(idService) {
 
 
 async function getServiceByType(serviceParam) {
+    console.log("Hello")
+    console.log("headers ", serviceParam.headers.type)
     var services = await Service.find({ typeService: serviceParam.headers.type })
-    return services
+    console.log("services :", services)
+    return services;
 }

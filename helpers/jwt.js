@@ -16,7 +16,7 @@ function jwt() {
             '/admin/authenticate',
             '/VoitureOptionService/create',
             '/service/create',
-            '/service/getOptionServiceVoiture',
+            '/service/getOptionServiceVoitureById',
             '/service/getServiceByType'
         ]
     });
