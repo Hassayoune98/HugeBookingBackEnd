@@ -7,6 +7,7 @@ const schema = new Schema({
     phoneNumber: { type: String, required: true },
     typeService: { type: String, required: true },
     voitureOption: [{ type: Schema.Types.ObjectId, ref: 'VoitureOptionService' }],
+    chambreOption: [{ type: Schema.Types.ObjectId, ref: 'chambreOptionService' }]
 });
 
 schema.set('toJSON', { virtuals: true });
