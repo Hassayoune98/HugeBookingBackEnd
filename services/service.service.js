@@ -15,7 +15,8 @@ module.exports = {
     create,
     update,
     _delete,
-    getOptionServiceVoiture
+    getOptionServiceVoitureById,
+    getServiceByType
 };
 
 
@@ -53,7 +54,7 @@ async function update(idService, serviceParam) {
     return await service.save();
 }
 
-async function getOptionServiceVoiture(serviceParam) {
+async function getOptionServiceVoitureById(serviceParam) {
     const service = await Service.findById(serviceParam.headers.idservice).populate("voitureOption");
     console.log("liste optionservice ", service);
     return await service;
@@ -63,4 +64,10 @@ async function getOptionServiceVoiture(serviceParam) {
 async function _delete(idService) {
     const service = await Service.findByIdAndRemove(idService);
 
+}
+
+
+async function getServiceByType(serviceParam) {
+    var services = await Service.find({ typeService: serviceParam.headers.type })
+    return services
 }

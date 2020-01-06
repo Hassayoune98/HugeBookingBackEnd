@@ -5,14 +5,21 @@ const serviceService = require('./service.service');
 router.post('/create', create);
 router.put('/update', update);
 router.delete('/delete', _delete);
-router.get('/getOptionServiceVoitureById', getOptionServiceVoiture);
+router.get('/getOptionServiceVoitureById', getOptionServiceVoitureById);
+router.get('/getServiceByType', getServiceByType);
 
 module.exports = router;
 
 
 function getOptionServiceVoitureById(req, res, next) {
-    serviceService.getOptionServiceVoiture(req)
+    serviceService.getOptionServiceVoitureById(req)
         .then(service => res.json({ service: service }))
+        .catch(err => next(err));
+}
+
+function getServiceByType(req, res, next) {
+    serviceService.getServiceByType(req)
+        .then(services => res.json({ services: services }))
         .catch(err => next(err));
 }
 
