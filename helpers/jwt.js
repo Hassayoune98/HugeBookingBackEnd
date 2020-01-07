@@ -19,7 +19,8 @@ function jwt() {
             '/service/create',
             '/service/getOptionServiceVoitureById',
             '/service/getOptionServiceChambre',
-            '/service/getServiceByType'
+            '/service/getServiceByType',
+            '/VoitureOptionService/getCar'
         ]
     });
 }

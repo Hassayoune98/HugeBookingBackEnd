@@ -14,7 +14,8 @@ var Service = db.Service;
 module.exports = {
     create,
     update,
-    _delete
+    _delete,
+    getVoitureOptionById
 };
 
 
@@ -61,6 +62,15 @@ async function update(idOptionService, optionServiceParam) {
     Object.assign(optionService, optionServiceParam);
 
     return await optionService.save();
+}
+
+
+async function getVoitureOptionById(idvoiture)
+{
+    const voiture = await VoitureOptionService.findById(idvoiture);
+    console.log("voiture   :",voiture)
+    return voiture;
+
 }
 
 
