@@ -22,7 +22,8 @@ module.exports = {
 
 
 async function create(serviceParam) {
-    var service = new Service({
+    //console.log("service param :", serviceParam.body.name);
+        var service = new Service({
         name: serviceParam.body.name,
         address: serviceParam.body.address,
         phoneNumber: serviceParam.body.phoneNumber,
@@ -30,6 +31,8 @@ async function create(serviceParam) {
 
 
     })
+
+    console.log("service :: ", service)
 
     if (await service.save()) {
         console.log("service created ");
@@ -57,7 +60,7 @@ async function update(idService, serviceParam) {
 
 async function getOptionServiceVoitureById(serviceParam) {
     const service = await Service.findById(serviceParam.headers.idservice).populate("voitureOption");
-    console.log("liste optionservice ", service);
+ //   console.log("liste optionservice ", service);
     return await service;
 
 }
@@ -65,7 +68,7 @@ async function getOptionServiceVoitureById(serviceParam) {
 
 async function getOptionServiceChambreById(serviceParam) {
     const service = await Service.findById(serviceParam.headers.idservice).populate("chambreOption");
-    console.log("liste optionservice ", service);
+   // console.log("liste optionservice ", service);
     return await service;
 
 }
@@ -76,9 +79,9 @@ async function _delete(idService) {
 
 
 async function getServiceByType(serviceParam) {
-    console.log("Hello")
-    console.log("headers ", serviceParam.headers.type)
+ //   console.log("Hello")
+//console.log("headers ", serviceParam.headers.type)
     var services = await Service.find({ typeService: serviceParam.headers.type })
-    console.log("services :", services)
+  //  console.log("services :", services)
     return services;
 }

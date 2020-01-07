@@ -18,7 +18,7 @@ app.use('/users', require('./users/users.controller'));
 app.use('/admin', require('./admin/admin.controller'));
 app.use('/sender', require('./mailer/mailer.controller'));
 app.use('/service', require('./services/service.controller'));
-app.use('/VoitureOptionService', require('./VoitureOptionService/voitureOptionService.controller'));
+app.use('/VoitureOptionService', require('./voitureOptionService/voitureOptionService.controller'));
 app.use('/chambreOptionService', require('./chambreOptionService/chambreOptionService.controller'));
 
 

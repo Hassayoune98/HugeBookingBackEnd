@@ -19,7 +19,7 @@ module.exports = {
 
 
 async function create(optionServiceParam) {
-    console.log("option voiture : ", optionServiceParam.body)
+  //  console.log("option voiture : ", optionServiceParam.body)
     var optionservice = new VoitureOptionService({
         disponibility: optionServiceParam.body.disponibility,
         name: optionServiceParam.body.name,
@@ -31,8 +31,10 @@ async function create(optionServiceParam) {
 
     })
 
+
     var service = await Service.findById(optionServiceParam.headers.idservice)
-    console.log("id Service ", optionservice._id)
+
+  
     await service.update({
         $addToSet: { voitureOption: optionservice._id }
     })
@@ -45,6 +47,8 @@ async function create(optionServiceParam) {
         console.log("something wrong");
 
     }
+
+  
 
     return optionservice;
 }
