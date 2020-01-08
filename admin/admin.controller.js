@@ -13,6 +13,8 @@ router.post('/register', register);
 module.exports = router;
 
 function register(req, res, next) {
+
+    //cons
     console.log('Admin works')
     adminService.register(req)
         .then(result => res.json(result))
