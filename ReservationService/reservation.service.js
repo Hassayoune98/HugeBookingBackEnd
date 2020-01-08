@@ -13,7 +13,7 @@ var Service = db.Service;
 var Reservation = db.Reservation;
 
 module.exports = {
-    createcreateReservationForCar
+    createReservationForCar
 };
 
 

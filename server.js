@@ -21,14 +21,14 @@ app.use('/service', require('./services/service.controller'));
 app.use('/VoitureOptionService', require('./voitureOptionService/voitureOptionService.controller'));
 app.use('/chambreOptionService', require('./chambreOptionService/chambreOptionService.controller'));
 app.use('/VoyageOptionService',require('./voyageOptionService/voyageOptionService.controller'));
-//app.use('/ReservationService',require('./ReservationService/reservation.controller'));
+app.use('/ReservationService',require('./ReservationService/reservation.controller'));
 
 
 // global error handler
 app.use(errorHandler);
 
 // start server
-const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 5000;
+const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 4000;
 const server = app.listen(port, function () {
     console.log('Server listening on port ' + port);
 });
