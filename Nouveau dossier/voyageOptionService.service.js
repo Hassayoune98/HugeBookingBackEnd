@@ -15,11 +15,12 @@ module.exports = {
     create,
     update,
     _delete,
-    getVoyageOptionById
+    getVoyageOptionById,
+	getOptionVol
 };
 
 async function create(optionServiceParam) {
-  //  console.log("option voiture : ", optionServiceParam.body)
+ 
     var optionservice = new VoyageOptionService({
        
        
@@ -71,6 +72,14 @@ async function getVoyageOptionById(idvol)
     const vol = await VoyageOptionService.findById(idvol);
     console.log("vol   :",vol)
     return vol;
+
+}
+
+async function getOptionVol()
+{
+    const vols = await VoyageOptionService.find(vols);
+    console.log("vols   :",vols)
+    return vols;
 
 }
 
