@@ -7,5 +7,7 @@ module.exports = {
     User: require('../users/user.model'),
     Service: require('../services/service.model'),
     VoitureOptionService: require('../voitureOptionService/voitureOptionService.model'),
-    chambreOptionService: require('../chambreOptionService/chambreOptionService.model')
+    chambreOptionService: require('../chambreOptionService/chambreOptionService.model'),
+    voyageOptionService: require('../voyageOptionService/voyageOptionService.model'),
+    Reservation: require('../ReservationService/reservation.model')
 };

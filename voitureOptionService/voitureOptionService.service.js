@@ -24,8 +24,6 @@ async function create(optionServiceParam) {
     var optionservice = new VoitureOptionService({
         disponibility: optionServiceParam.body.disponibility,
         name: optionServiceParam.body.name,
-        dateFinReservation: optionServiceParam.body.dateFinReservation,
-        dateDebutReservation: optionServiceParam.body.dateDebutReservation,
         model: optionServiceParam.body.model,
         price: optionServiceParam.body.price,
         status: optionServiceParam.body.status

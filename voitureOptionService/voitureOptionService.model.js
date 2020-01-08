@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
 
-    dateFinReservation: { type: Date },
-    dateDebutReservation: { type: Date },
+   
     disponibility: { type: String },
     name: { type: String, required: true },
     price: { type: Number },
     status: { type: String },
     model: { type: String }
+    //reservation: { type: Schema.Types.ObjectId, ref: 'reservation' }
 
 });
 

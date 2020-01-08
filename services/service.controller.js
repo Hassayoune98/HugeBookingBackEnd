@@ -6,10 +6,16 @@ router.post('/create', create);
 router.put('/update', update);
 router.delete('/delete', _delete);
 router.get('/getOptionServiceVoitureById', getOptionServiceVoitureById);
+router.get('/getOptionServiceVoyageById', getOptionServiceVoyageById);
 router.get('/getServiceByType', getServiceByType);
 
 module.exports = router;
 
+function getOptionServiceVoyageById(req, res, next) {
+    serviceService.getOptionServiceVoyageById(req)
+        .then(service => res.json({ service: service }))
+        .catch(err => next(err));
+}
 
 function getOptionServiceVoitureById(req, res, next) {
     serviceService.getOptionServiceVoitureById(req)
