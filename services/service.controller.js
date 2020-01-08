@@ -6,6 +6,7 @@ router.post('/create', create);
 router.put('/update', update);
 router.delete('/delete', _delete);
 router.get('/getOptionServiceVoitureById', getOptionServiceVoitureById);
+router.get('/getOptionServiceChambreById', getOptionServiceChambreById);
 router.get('/getServiceByType', getServiceByType);
 
 module.exports = router;
@@ -13,6 +14,12 @@ module.exports = router;
 
 function getOptionServiceVoitureById(req, res, next) {
     serviceService.getOptionServiceVoitureById(req)
+        .then(service => res.json({ service: service }))
+        .catch(err => next(err));
+}
+
+function getOptionServiceChambreById(req, res, next) {
+    serviceService.getOptionServiceChambreById(req)
         .then(service => res.json({ service: service }))
         .catch(err => next(err));
 }
