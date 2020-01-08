@@ -17,7 +17,7 @@ function jwt() {
             '/VoitureOptionService/create',
             '/chambreOptionService/create',
             '/service/create',
-            '/service/getOptionServiceVoiture',
+            '/service/getOptionServiceVoitureById',
             '/service/getOptionServiceChambre',
             '/service/getServiceByType'
         ]
