@@ -20,7 +20,8 @@ function jwt() {
             '/service/getOptionServiceVoitureById',
             '/service/getOptionServiceChambre',
             '/service/getServiceByType',
-            '/VoitureOptionService/getCar'
+            '/VoitureOptionService/getCar',
+            '/ReservationService/create'
         ]
     });
 }

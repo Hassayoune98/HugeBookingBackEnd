@@ -18,7 +18,7 @@ module.exports = {
 
 
 async function createReservationForCar(reservationParam) {
-  //  console.log("option voiture : ", optionServiceParam.body)
+    console.log("option voiture : ", reservationParam.body)
     var reservation = new Reservation({
         dateFinReservation: reservationParam.body.dateFinReservation,
         dateDebutReservation: reservationParam.body.dateDebutReservation,
