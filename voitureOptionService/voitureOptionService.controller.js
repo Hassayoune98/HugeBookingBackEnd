@@ -5,13 +5,21 @@ const voitureOptionService = require('./voitureOptionService.service');
 router.post('/create', create);
 router.put('/update', update);
 router.delete('/delete', _delete);
+router.get('/getCar',getVoitureOptionById);
 
 module.exports = router;
 
 function create(req, res, next) {
-    console.log("test api ", req)
+    console.log("Create here")
     voitureOptionService.create(req)
         .then(() => res.json({ message: 'option service created with success' }))
+        .catch(err => next(err));
+}
+
+function getVoitureOptionById(req, res, next) {
+    console.log("idvoiture",req.headers.idcar)
+    voitureOptionService.getVoitureOptionById(req.headers.idcar)
+        .then(car => res.json({ car: car }))
         .catch(err => next(err));
 }
 

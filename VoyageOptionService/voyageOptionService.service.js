@@ -8,25 +8,29 @@ var async = require("async");
 var crypto = require('crypto');
 var nodemailer = require("nodemailer");
 var mailer = require("mailer/mailer.service");
-var VoitureOptionService = db.VoitureOptionService;
+var voyageOptionService = db.voyageOptionService;
 var Service = db.Service;
 
 module.exports = {
     create,
     update,
     _delete,
-    getVoitureOptionById
+    getVoyageOptionById,
+	getOptionVol
 };
 
-
 async function create(optionServiceParam) {
-  //  console.log("option voiture : ", optionServiceParam.body)
-    var optionservice = new VoitureOptionService({
-        disponibility: optionServiceParam.body.disponibility,
-        name: optionServiceParam.body.name,
-        model: optionServiceParam.body.model,
-        price: optionServiceParam.body.price,
-        status: optionServiceParam.body.status
+ 
+    var optionservice = new VoyageOptionService({
+       
+       
+        dateAller: optionServiceParam.body.dateAller,
+        dateDebut: optionServiceParam.body.dateDebut,
+        status: optionServiceParam.body.status,
+        depart: optionServiceParam.body.depart,
+        arrive: optionServiceParam.body.arrive,
+        price: optionServiceParam.body.price
+        
 
     })
 
@@ -35,7 +39,7 @@ async function create(optionServiceParam) {
 
   
     await service.update({
-        $addToSet: { voitureOption: optionservice._id }
+        $addToSet: { voyageOption: optionservice._id }
     })
 
     if (await optionservice.save()) {
@@ -55,7 +59,7 @@ async function create(optionServiceParam) {
 
 async function update(idOptionService, optionServiceParam) {
 
-    const optionService = await VoitureOptionService.findById(idOptionService);
+    const optionService = await VoyageOptionService.findById(idOptionService);
     if (!optionService) throw 'optionService not found';
     Object.assign(optionService, optionServiceParam);
 
@@ -63,17 +67,25 @@ async function update(idOptionService, optionServiceParam) {
 }
 
 
-async function getVoitureOptionById(idvoiture)
+async function getVoyageOptionById(idvol)
 {
-    const voiture = await VoitureOptionService.findById(idvoiture);
-    console.log("voiture   :",voiture)
-    return voiture;
+    const vol = await VoyageOptionService.findById(idvol);
+    console.log("vol   :",vol)
+    return vol;
+
+}
+
+async function getOptionVol()
+{
+    const vols = await VoyageOptionService.find(vols);
+    console.log("vols   :",vols)
+    return vols;
 
 }
 
 
 
 async function _delete(idOptionService) {
-    const optionService = await VoitureOptionService.findByIdAndRemove(idOptionService);
+    const optionService = await VolOptionService.findByIdAndRemove(idOptionService);
 
 }
