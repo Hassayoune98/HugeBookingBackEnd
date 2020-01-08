@@ -6,6 +6,7 @@ const schema = new Schema({
     address: { type: String, required: true },
     phoneNumber: { type: String, required: true },
     typeService: { type: String, required: true },
+	voyageOption: [{ type: Schema.Types.ObjectId, ref: 'voyageOptionService' }],
     voitureOption: [{ type: Schema.Types.ObjectId, ref: 'VoitureOptionService' }],
     chambreOption: [{ type: Schema.Types.ObjectId, ref: 'chambreOptionService' }]
 });
