@@ -8,6 +8,6 @@ module.exports = {
     Service: require('../services/service.model'),
     VoitureOptionService: require('../voitureOptionService/voitureOptionService.model'),
     chambreOptionService: require('../chambreOptionService/chambreOptionService.model'),
-    voyageOptionService: require('../voyageOptionService/voyageOptionService.model'),
+    voyageOptionService: require('../VoyageOptionService/voyageOptionService.model'),
     Reservation: require('../ReservationService/reservation.model')
 };

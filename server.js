@@ -20,7 +20,7 @@ app.use('/sender', require('./mailer/mailer.controller'));
 app.use('/service', require('./services/service.controller'));
 app.use('/VoitureOptionService', require('./voitureOptionService/voitureOptionService.controller'));
 app.use('/chambreOptionService', require('./chambreOptionService/chambreOptionService.controller'));
-app.use('/VoyageOptionService',require('./voyageOptionService/voyageOptionService.controller'));
+app.use('/VoyageOptionService',require('./VoyageOptionService/voyageOptionService.controller'));
 app.use('/ReservationService',require('./ReservationService/reservation.controller'));
 
 
