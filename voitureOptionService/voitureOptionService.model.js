@@ -5,7 +5,7 @@ const schema = new Schema({
 
     dateFinReservation: { type: Date },
     dateDebutReservation: { type: Date },
-    disponibility: { type: Boolean, required: true },
+    disponibility: { type: String, required: true },
     name: { type: String, required: true },
     price: { type: Number },
     status: { type: String },

@@ -5,6 +5,7 @@ const chambreOptionService = require('./chambreOptionService.service');
 router.post('/create', create);
 router.put('/update', update);
 router.delete('/delete', _delete);
+router.get('/getRoom', getChambreOptionById);
 
 module.exports = router;
 
@@ -15,6 +16,12 @@ function create(req, res, next) {
         .catch(err => next(err));
 }
 
+function getChambreOptionById(req, res, next) {
+    console.log("idroom", req.headers.idroom)
+    chambreOptionService.getChambreOptionById(req.headers.idroom)
+        .then(room => res.json({ room: room }))
+        .catch(err => next(err));
+}
 
 function update(req, res, next) {
 

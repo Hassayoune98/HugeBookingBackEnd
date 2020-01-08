@@ -18,8 +18,10 @@ function jwt() {
             '/chambreOptionService/create',
             '/service/create',
             '/service/getOptionServiceVoitureById',
-            '/service/getOptionServiceChambre',
-            '/service/getServiceByType'
+            '/service/getOptionServiceChambreById',
+            '/service/getServiceByType',
+            '/chambreOptionService/getRoom',
+
         ]
     });
 }

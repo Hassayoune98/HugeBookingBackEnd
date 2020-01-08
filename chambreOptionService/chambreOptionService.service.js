@@ -6,7 +6,8 @@ var Service = db.Service;
 module.exports = {
     create,
     update,
-    _delete
+    _delete,
+    getChambreOptionById
 };
 
 
@@ -51,6 +52,14 @@ async function update(idOptionService, optionServiceParam) {
     return await optionService.save();
 }
 
+
+async function getChambreOptionById(idroom)
+{
+    const room = await chambreOptionService.findById(idroom);
+    console.log("room   :",room)
+    return room;
+
+}
 
 
 async function _delete(idOptionService) {
