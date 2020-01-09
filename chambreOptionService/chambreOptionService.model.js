@@ -9,7 +9,9 @@ const schema = new Schema({
     name: { type: String, required: true },
     price: { type: Number },
     typeChambre: { type: String },
-    status: { type: String }
+    status: { type: String },
+    reservation: { type: Schema.Types.ObjectId, ref: 'reservation' }
+
 
 });
 

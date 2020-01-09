@@ -9,11 +9,13 @@ var crypto = require('crypto');
 var nodemailer = require("nodemailer");
 var mailer = require("mailer/mailer.service");
 var VoitureOptionService = db.VoitureOptionService;
+var chambreOptionService = db.chambreOptionService;
 var Service = db.Service;
 var Reservation = db.Reservation;
 
 module.exports = {
-    createReservationForCar
+    createReservationForCar,
+    createReservationForRoom
 };
 
 
@@ -22,14 +24,14 @@ async function createReservationForCar(reservationParam) {
     var reservation = new Reservation({
         dateFinReservation: reservationParam.body.dateFinReservation,
         dateDebutReservation: reservationParam.body.dateDebutReservation,
-      
+
 
     })
 
 
     var voiture = await VoitureOptionService.findById(reservationParam.headers.idvoiture)
 
-  
+
     await voiture.update({
         $addToSet: { reservation: reservation._id }
     })
@@ -43,9 +45,39 @@ async function createReservationForCar(reservationParam) {
 
     }
 
-  
+
 
     return reservation;
 }
 
+async function createReservationForRoom(reservationParam) {
+    console.log("option chambre : ", reservationParam.body)
+    var reservation = new Reservation({
+        dateFinReservation: reservationParam.body.dateFinReservation,
+        dateDebutReservation: reservationParam.body.dateDebutReservation,
+
+
+    })
+
+
+    var chambre = await chambreOptionService.findById(reservationParam.headers.idroom)
+
+
+    await chambre.update({
+        $addToSet: { reservation: reservation._id }
+    })
+
+    if (await reservation.save()) {
+        console.log("service created ");
+
+
+    } else {
+        console.log("something wrong");
+
+    }
+
+
+
+    return reservation;
+}
 
