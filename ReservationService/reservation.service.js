@@ -66,7 +66,9 @@ async function createReservationForRoom(reservationParam) {
 
 
     await chambre.update({
-        $addToSet: { reservation: reservation._id }
+        $addToSet: { reservation: reservation._id}
+        ,disponibility: "False"
+
     })
 
     if (await reservation.save()) {
