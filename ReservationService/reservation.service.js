@@ -15,7 +15,8 @@ var Reservation = db.Reservation;
 
 module.exports = {
     createReservationForCar,
-    createReservationForRoom
+    createReservationForRoom,
+    getReservationByType
 };
 
 
@@ -33,7 +34,8 @@ async function createReservationForCar(reservationParam) {
 
 
     await voiture.update({
-        $addToSet: { reservation: reservation._id }
+        $addToSet: { reservation: reservation._id },
+        disponibility: "False"
     })
 
     if (await reservation.save()) {
@@ -79,5 +81,12 @@ async function createReservationForRoom(reservationParam) {
 
 
     return reservation;
+}
+
+
+async function getReservationByType (){
+    const optionServiceVoiture = await VoitureOptionService.find({ disponibility: "False" }).populate("reservation");
+    return optionServiceVoiture;
+
 }
 

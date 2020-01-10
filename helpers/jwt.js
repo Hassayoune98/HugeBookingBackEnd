@@ -23,7 +23,8 @@ function jwt() {
             '/VoitureOptionService/getCar',
             '/ReservationService/create',
             '/chambreOptionService/getRoom',
-            '/ReservationService/create-reservation-room'
+            '/ReservationService/create-reservation-room',
+            '/ReservationService/getReservations'
         ]
     });
 }
